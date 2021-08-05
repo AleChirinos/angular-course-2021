@@ -71,11 +71,5 @@ export class AppComponent {
 
    const {phone:ci} = per3;
    console.log('name=', ci); 
-
-   const tarea1= {1:'a',2:'a',3:'a',4:'a',5:'a',6:'a'};
-   console.log('Result', Object.keys(tarea1));
-
-   const tarea2= [1,2,3,4,5,6].filter(item => item%2 === 0).join(',');
-   console.log(tarea2);
  }
 }
