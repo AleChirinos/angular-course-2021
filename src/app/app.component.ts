@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular2021';
+  myStatus = 'my status';
 
   constructor(){
 
@@ -86,4 +87,8 @@ export class AppComponent {
    const task2= [1,2,3,4,5,6].filter(item => item%2 === 0).join(',');
    console.log(task2);
  }
+
+  printDataAlejandraComponent(event:any){
+    console.log('ALEJANDRA COMP: ', event);
+  }
 }
