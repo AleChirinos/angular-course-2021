@@ -91,4 +91,8 @@ export class AppComponent {
   printDataAlejandraComponent(event:any){
     console.log('ALEJANDRA COMP: ', event);
   }
+
+  printData(event) {
+    console.log('CHILD COMP SEND DATA: ', event);
+  }
 }
