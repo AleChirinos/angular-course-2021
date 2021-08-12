@@ -8,8 +8,16 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'angular2021';
   myStatus = 'my status';
+
   sw = true;
+
   color;string;
+
+  people = [
+    {name: 'Alejandra', lastName: 'Chirinos' },
+    {name: 'Juan', lastName: 'Perez' },
+    {name: 'Jose', lastName: 'Flores' },
+  ];
 
   constructor(){
 

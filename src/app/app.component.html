@@ -43,3 +43,10 @@
   <li *ngSwitchCase="'green'"> green </li>
   <li *ngSwitchDefault> orange </li>
 </ul>
+
+<div style="border: 5px purple solid;">
+  <p> - Mostrar una lista de personas dinamicamente mediante un componente ingresando name y lastname. </p>
+  <ul>
+    <li *ngFor="let person of people"> {{person.name}} {{person.lastName}}</li>
+  </ul>
+</div>
