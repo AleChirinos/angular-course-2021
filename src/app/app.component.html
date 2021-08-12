@@ -13,3 +13,33 @@
 <div *ngIf="sw">
   <app-test3 [name2]="myStatus"></app-test3>
 </div>
+
+<ul>
+  <li *ngFor = "let item of [1, 2, 3, 4, 5, 6]">{{item}}</li>
+
+  <li> first </li>
+  <li> second </li>
+  <li> third </li>
+</ul>
+
+<ul>
+  <li *ngFor = "let item of ['first', 'second']; let i = index;">{{item}} {{i + 10}}
+    <alejandrachirinos *ngIf = "item === 'first'"
+      [status]="item" (onSendData)="printDataAlejandraComponent($event)">
+    </alejandrachirinos>
+  </li>
+</ul>
+
+<input type="text" [(ngModel)]="color">
+<ul [ngSwitch]="color">
+  <li *ngSwitchCase="'red'"> 
+    <alejandrachirinos [status]="color" (onSendData)="printDataAlejandraComponent($event)">
+    </alejandrachirinos>
+  </li>
+  <li *ngSwitchCase="'yellow'"> 
+    <app-test2 [name]="color" (onSendData)="printData($event)">
+    </app-test2>
+  </li>
+  <li *ngSwitchCase="'green'"> green </li>
+  <li *ngSwitchDefault> orange </li>
+</ul>
