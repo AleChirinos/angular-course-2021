@@ -93,13 +93,13 @@
 
 <div style="border: 5px blue solid;">
   <p> - Mostrar con diferente color pares e impares usando ngFor </p>
-  <ng-container *ngFor="let item of [1, 2, 3, 4, 5, 6, 7, 8, 9]; let i = index">
+  <ng-container *ngFor="let item of [1, 2, 3, 4, 5, 6, 7, 8, 9]">
     <ng-template #odd>
       <ul>
         <li [style.background]="'yellow'">{{item}}</li>
       </ul>
     </ng-template> 
-    <ul *ngIf="i%2 === 0; else odd">
+    <ul *ngIf="item%2 === 0; else odd">
       <li [style.background]="'red'">{{item}}</li>
     </ul>
   </ng-container> 
