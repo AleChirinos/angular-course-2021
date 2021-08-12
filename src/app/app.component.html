@@ -50,3 +50,43 @@
     <li *ngFor="let person of people"> {{person.name}} {{person.lastName}}</li>
   </ul>
 </div>
+
+<button (click)= "sw =! sw"> SHOW TEST3 </button>
+<div *ngIf="sw else MyVarElse">
+  <app-test3 [name2]="myStatus"></app-test3>
+</div>
+
+<ng-template #MyVarElse>
+  <p> This is my template </p>
+</ng-template>
+
+<app-test2 name="alejandra" lastname="chirinos" (onSendData)="printData($event)">
+  <p> My own content </p>
+  <button>My button</button>
+</app-test2> 
+
+<button (click)= "sw =! sw"> Button container </button>
+<ng-container *ngIf="sw" style="margin: 30px;">
+  <p>NG CONTAINER</p>
+</ng-container>
+
+<input type="text" [(ngModel)]="color" > 
+<div [style.border]= "'5px solid ' + color">
+  my div with styles
+</div>
+
+<p [ngStyle]="{'background': color, 'border': '5px gray solid'}">
+  my p with ng style
+</p>
+
+<div [class.est1]="color === 'hola'"> 
+  my div with class
+</div>
+
+<div [ngClass]="{
+'est1': color === 'hola0',
+'est2': color === 'hola1',
+'est3': color === 'hola2'
+}"> 
+  my div with ng class
+</div>
