@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {of} from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +15,8 @@ export class AppComponent {
 
   color;string;
 
+  tictock = of([1,2,3,4,5,6]);
+
   people = [
     {name: 'Alejandra', lastName: 'Chirinos' },
     {name: 'Juan', lastName: 'Perez' },
@@ -21,6 +25,28 @@ export class AppComponent {
 
   constructor(){
 
+    //Person A
+    this.tictock. pipe(
+      map(a => a.join('-')),
+      map(a => a + ' hola'),
+    ).subscribe(v => {
+      console.log(' PERSON A VIDEO', v);
+    });
+
+    //Person B
+    this.tictock.pipe(
+      filter((v:any) => v[0]%2 === 1)
+    ).subscribe(v => {
+      console.log('PERSON B VIDEO', v);
+    });
+
+    //Person C 
+    this.tictock.subscribe(v => {
+      console.log('PERSON B VIDEO', v);
+    });
+
+
+    /*
     const testMap = [1,2,3,4,5,6].map(item => item * 2);
     console.log(testMap);
 
@@ -96,7 +122,12 @@ export class AppComponent {
    //[1,2,3,4,5,6] filtrar los numeros impares y mostrarlos como cadena
    const task2= [1,2,3,4,5,6].filter(item => item%2 === 0).join(',');
    console.log(task2);
+   */
  }
+
+  onAddVideo(){
+    
+  }
 
   printDataAlejandraComponent(event:any){
     console.log('ALEJANDRA COMP: ', event);
