@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {of} from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import {BehaviorSubject, of, Subscription} from 'rxjs';
+import { filter, map, delay} from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -14,8 +14,10 @@ export class AppComponent {
   sw = true;
 
   color;string;
-
-  tictock = of([1,2,3,4,5,6]);
+  
+  video = 1;
+  personASub:Subscription;
+  tictock = new BehaviorSubject(this.video);
 
   people = [
     {name: 'Alejandra', lastName: 'Chirinos' },
@@ -26,23 +28,22 @@ export class AppComponent {
   constructor(){
 
     //Person A
-    this.tictock. pipe(
-      map(a => a.join('-')),
-      map(a => a + ' hola'),
+    this.personASub = this.tictock.pipe(
+      filter(s => s%2 === 0)
     ).subscribe(v => {
-      console.log(' PERSON A VIDEO', v);
+      console.log('PERSON A VIDEO', v);
     });
 
     //Person B
     this.tictock.pipe(
-      filter((v:any) => v[0]%2 === 1)
+      delay(4000)
     ).subscribe(v => {
       console.log('PERSON B VIDEO', v);
     });
 
     //Person C 
     this.tictock.subscribe(v => {
-      console.log('PERSON B VIDEO', v);
+      console.log('PERSON C VIDEO', v);
     });
 
 
@@ -126,8 +127,14 @@ export class AppComponent {
  }
 
   onAddVideo(){
-    
+    this.video++;
+    this.tictock.next(this.video);
   }
+
+  person1Unsubscribe(){
+    this.personASub.unsubscribe();
+    console.log('PERSON A SE DESUSCRIBE')
+ }
 
   printDataAlejandraComponent(event:any){
     console.log('ALEJANDRA COMP: ', event);
