@@ -21,6 +21,7 @@ export class AppComponent {
 
   @ViewChild('myDiv1') myDiv1: ElementRef;
   @ViewChild('myDiv2') myDiv2: ElementRef;
+  @ViewChild('myDiv3') myDiv3: ElementRef;
   @ViewChild('myCompAlejandra') myCompAlejandra: any;
 
   people = [
@@ -162,5 +163,7 @@ export class AppComponent {
     this.myCompAlejandra.onClickTest();
   
     this.myDiv2.nativeElement.value = 'alejandra';
+
+    this.myDiv3.nativeElement.className = 'classChildView';
   }
 }
