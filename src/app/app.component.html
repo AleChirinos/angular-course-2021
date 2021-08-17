@@ -1,7 +1,9 @@
 <button directive1Test (click)="onAddVideo()"> add Video </button>
 <button directive1Test (click)="person1Unsubscribe()"> Unsuscribe person A</button>
 
-<p [directive1Test]="'red'"
+<input type="text" [(ngModel)]="color">
+
+<p [directive1Test]="color"
    (outputTest)="test($event)"
   >Ni primera directiva de atributo 
 </p>
