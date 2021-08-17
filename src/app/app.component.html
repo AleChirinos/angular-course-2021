@@ -8,7 +8,13 @@
   >Ni primera directiva de atributo 
 </p>
 
-<alejandrachirinos></alejandrachirinos>
+<input type="checkbox" [(ngModel)]="sw"> ngIfAlejandra
+
+<div *ngIfAlejandra="sw"  (test)="test100($event)">
+
+  <p>my own strcutural directive </p>
+
+</div>
 
 
 
