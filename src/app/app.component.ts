@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import {BehaviorSubject, of, Subscription} from 'rxjs';
 import { filter, map, delay} from 'rxjs/operators';
 
@@ -18,6 +18,10 @@ export class AppComponent {
   video = 1;
   personASub:Subscription;
   tictock = new BehaviorSubject(this.video);
+
+  @ViewChild('myDiv1') myDiv1: ElementRef;
+  @ViewChild('myDiv2') myDiv2: ElementRef;
+  @ViewChild('myCompAlejandra') myCompAlejandra: any;
 
   people = [
     {name: 'Alejandra', lastName: 'Chirinos' },
@@ -150,5 +154,13 @@ export class AppComponent {
 
   test100(event){
     console.log('234234234234234', event);
+  }
+
+  onShowLocalVars(){
+    console.log(this.myDiv1, this.myDiv2, this.myCompAlejandra);
+  
+    this.myCompAlejandra.onClickTest();
+  
+    this.myDiv2.nativeElement.value = 'alejandra';
   }
 }
