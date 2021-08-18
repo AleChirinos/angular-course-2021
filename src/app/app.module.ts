@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { Directive1Directive } from './directive1.directive';
 import { Directive2Directive } from './directive2.directive';
+import { CoreModule } from './homeworkModules/core/core.module';
 import { AdminModule } from './pages/admin/admin.module';
 import { BuyModule } from './pages/buy/buy.module';
 import { HomeModule } from './pages/home/home.module';
@@ -26,7 +27,8 @@ import { Test3Component } from './test3/test3.component';
     FormsModule,
     HomeModule,
     AdminModule,
-    BuyModule
+    BuyModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
