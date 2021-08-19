@@ -18,6 +18,7 @@ export class Admin1Component implements OnInit {
 
   ngOnInit() {
   }
+  
 
   onAdd(){
     const aux = this.auxObs$.getValue();
