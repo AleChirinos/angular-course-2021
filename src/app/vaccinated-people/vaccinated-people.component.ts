@@ -16,8 +16,7 @@ import { Component, Input, Output, EventEmitter } from "@angular/core";
     <br>
 	  <button *ngIf="!vacunado" 
             (click)="onVacunar()"
-            [disabled]="age <= 18"
-            [disabled]="disease">
+            [disabled]="age < 18 || disease">
       Vacunar
     </button>
   </div>
