@@ -28,6 +28,7 @@ export class AppComponent {
   verifyAllVacunados() {
     const novacunados = this.pets.novacunados.filter(p => p.disease);
     return novacunados.length === 0;
+    
   }
 
   vacunar(pet) {
