@@ -11,7 +11,7 @@
     <div *ngFor="let pet of pets.vacunados">
       <app-vaccinated-people
       [name]="pet.name"
-      [color]="pet.color"
+      [type]="pet.type"
       [age]="pet.age"
       [date]="pet.date"
       [disease]="pet.disease"
@@ -28,7 +28,7 @@
     <div *ngFor="let pet of pets.novacunados">
       <app-vaccinated-people
       [name]="pet.name"
-      [color]="pet.color"
+      [type]="pet.type"
       [age]="pet.age"
       [date]="pet.date"
       [disease]="pet.disease"
