@@ -6,76 +6,50 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular2021';
+  allPets = [
 
-  constructor(){
+    {name: "juan", age: 16, date: "2019-09-07T15:50+00Z", disease: true, color: "A", vacunado:0, doses: 0},   
+    {name: "maria", age: 23, date: "2019-09-07T15:50+00Z", disease: false, color: "B", vacunado:1, doses: 2},   
+    {name: "carla", age: 45, date: "2019-09-07T15:50+00Z", disease: true, color: "C", vacunado:0, doses: 0},   
+    {name: "marco", age: 50, date: "2019-09-07T15:50+00Z", disease: false, color: "A", vacunado:1, doses: 1},   
+    {name: "marta", age: 12, date: "2019-09-07T15:50+00Z", disease: false, color: "A", vacunado:0, doses: 0},   
+    {name: "jorge", age: 36, date: "2019-09-07T15:50+00Z", disease: false, color: "C", vacunado:1, doses: 3},   
+    {name: "maritza", age: 18, date: "2019-09-07T15:50+00Z", disease: false, color: "C", vacunado:0, doses: 0},   
+    {name: "leonardo", age: 35, date: "2019-09-07T15:50+00Z", disease: true, color: "B", vacunado:0, doses: 0},   
+    {name: "ramiro", age: 24, date: "2019-09-07T15:50+00Z", disease: false, color: "B", vacunado:1, doses: 2},   
+    {name: "juana", age: 13, date: "2019-09-07T15:50+00Z", disease: false, color: "A", vacunado:0, doses: 0} 
+  ];
 
-    const testMap = [1,2,3,4,5,6].map(item => item * 2);
-    console.log(testMap);
+  pets = {
+    vacunados: this.allPets.filter(p => p.vacunado),
+    novacunados: this.allPets.filter(p => !p.vacunado)
+  };
 
-    const testForeach = [1,2,3,4,5,6].forEach(item => item);
-    console.log(testForeach);
+  verifyAllVacunados() {
+    const novacunados = this.pets.novacunados.filter(p => p.disease);
+    return novacunados.length === 0;
+  }
 
-    const testFind = [1,2,3,4,5,6].find(item => item === 4);
-    console.log(testFind);
-
-    const testFilter = [1,2,3,4,5,6].filter(item => item%2 === 0);
-    console.log(testFilter);
-
-    const testFindIndex = [90,2,300,4,5,6].findIndex(item => item === 300);
-    console.log(testFindIndex);
-
-    const testIndexOf = 'ricardo'.indexOf('o')
-    console.log(testIndexOf);
-
-    const testJoin = [1,2,3,4,5,6].join(',');
-    console.log(testJoin);
-
-    const testSplit = '1,2,3,4,5,6'.split(',');
-    console.log(testSplit);
-
-    const testSpliceA = [10,20,30,40,50,60];
-    const testSpliceB = [1,2,3,4,5,6].splice(1,2);
-    testSpliceA.splice(0,1)
-
-    console.log(testSpliceB,  testSpliceA);
-
-    const testReduce = [1,2,3,4,5,6].reduce((acc, value) => acc + value, 100);
-    
-    const asadasd = {1:'d',2:'d',3:'d',4:'d',5:'d'};
-
-    const testEntries = {value: 'ricardo', key:'RPC'};
-    console.log('aaaa', Object.entries(testEntries));
-    console.log('bbbbb', Object.keys(testEntries));
-    console.log('ccccc', Object.values(testEntries));
-
-
-     const array1 = [1,2,3,4,5];
-     const array2 = [9,10,11, ...array1]
-
-     const per1 = {name: 'a', age: 12};
-     const per2 = {data: 'R', ...per1};
-
-     console.log('Spread', array2, per2)
-
-
-     const per3 = {
-      name: 'a', 
-      age: 12, 
-      phone: 12323234234, 
-      extra: 123, 
-      response:200,
-      response2:200,
-      response4:200
-      };
-
-   const {phone:ci} = per3;
-   console.log('name=', ci); 
-
-   const tarea1= {1:'a',2:'a',3:'a',4:'a',5:'a',6:'a'};
-   console.log('Result', Object.keys(tarea1));
-
-   const tarea2= [1,2,3,4,5,6].filter(item => item%2 === 0).join(',');
-   console.log(tarea2);
- }
+  vacunar(pet) {
+    const index = this.pets.novacunados.findIndex(p => p === pet);
+    //const vType = this.pets[tipo]
+    //this.pets[tipo].splice(index, 1);
+    pet.doses = pet.doses +1;
+    if(pet.color === "A"){
+      if(pet.doses  === 1){
+        this.pets.novacunados.splice(index, 1);
+        this.pets.vacunados.push({...pet, vacunado: true});
+      }
+    } else if(pet.color === "B"){
+      if(pet.doses  === 2){
+        this.pets.novacunados.splice(index, 1);
+        this.pets.vacunados.push({...pet, vacunado: true});
+      }
+    } else if(pet.color === "C"){
+      if(pet.doses  === 3){
+        this.pets.novacunados.splice(index, 1);
+        this.pets.vacunados.push({...pet, vacunado: true});
+      }
+    }
+  }
 }
