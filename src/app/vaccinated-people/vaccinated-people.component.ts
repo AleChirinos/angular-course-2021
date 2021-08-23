@@ -7,7 +7,7 @@ import { Component, Input, Output, EventEmitter } from "@angular/core";
        style="float: left; margin: 10px; padding: 10px;">
 	  <p>Name: {{name | uppercase}}</p>
     <p>Age: {{age}}</p>
-    <p>Date:{{date}} </p>
+    <p>Date: {{(date | toDate)|date: 'dd/MM/yyyy'}}</p>
     <p *ngIf="vacunado else myVarElse2">Vaccinated: YES </p>
     <p *ngIf="disease else myVarElse1">Disease: YES</p>
     <p>vaccineType: {{type}}</p>

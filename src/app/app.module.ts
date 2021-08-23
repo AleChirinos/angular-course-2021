@@ -3,12 +3,14 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { ToDatePipe } from './to-date.pipe';
 import { VaccinatedPeopleComponent } from './vaccinated-people/vaccinated-people.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    VaccinatedPeopleComponent
+    VaccinatedPeopleComponent,
+    ToDatePipe
   ],
   imports: [
     BrowserModule
