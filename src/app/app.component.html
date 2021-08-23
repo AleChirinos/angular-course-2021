@@ -1,10 +1,10 @@
 <div  style="border: 5px blue solid; background-color: aqua;">
-
-  <p *ngIf="verifyAllVacunados()">
+<div style="border: 5px yellow solid; background-color: rgb(110, 224, 16);"> Vaccine: A={{typeA}}, B={{typeB}},    C={{typeC}}</div>
+  <p *ngIf="verifyAllVacunados()" style="border: 5px yellow solid; background-color: rgb(110, 224, 16);">
   EVERYBODY VACCINATED 
   </p>
 
-  <p>1- VACUNAS</p>
+  <h1>1- VACUNAS</h1>
   <p style="border: 5px purple solid; background-color: plum;"> VACCINATED TOTAL:  {{pets.vacunados.length}} </p>
   <p>VACCINATED PEOPLE</p>
   <div style="display: flex; flexDirection: row;">

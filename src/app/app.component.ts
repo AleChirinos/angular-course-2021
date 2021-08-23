@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   allPets = [
 
-    {name: "juan", age: 16, date: "2019-09-07T15:50+00Z", disease: true, type: "A", vacunado:0, doses: 0},   
+    {name: "juan", age: 16, date: "2019-09-07T15:50+00Z", disease: true, allPets: "A", vacunado:0, doses: 0},   
     {name: "maria", age: 23, date: "2019-09-07T15:50+00Z", disease: false, type: "B", vacunado:1, doses: 2},   
     {name: "carla", age: 45, date: "2019-09-07T15:50+00Z", disease: true, type: "C", vacunado:0, doses: 0},   
     {name: "marco", age: 50, date: "2019-09-07T15:50+00Z", disease: false, type: "A", vacunado:1, doses: 1},   
@@ -19,6 +19,10 @@ export class AppComponent {
     {name: "ramiro", age: 24, date: "2019-09-07T15:50+00Z", disease: false, type: "B", vacunado:1, doses: 2},   
     {name: "juana", age: 13, date: "2019-09-07T15:50+00Z", disease: false, type: "A", vacunado:0, doses: 0} 
   ];
+
+  typeA=this.allPets.filter(per => per.type === 'A').length;
+  typeB=this.allPets.filter(per => per.type === 'B').length;
+  typeC=this.allPets.filter(per => per.type === 'C').length;
 
   pets = {
     vacunados: this.allPets.filter(p => p.vacunado),
