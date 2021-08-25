@@ -32,6 +32,15 @@ export class AppComponent {
 
   constructor(){
 
+    this.pure(2,3);
+    this.pure(10,2);
+    this.pure(5,5);
+
+
+    this.impure(2,3);
+    this.impure(10,2);
+    this.impure(5,5);
+    /*
     //Person A
     this.personASub = this.tictock.pipe(
       filter(s => s%2 === 0)
@@ -50,7 +59,7 @@ export class AppComponent {
     this.tictock.subscribe(v => {
       console.log('PERSON C VIDEO', v);
     });
-
+    */
 
     /*
     const testMap = [1,2,3,4,5,6].map(item => item * 2);
@@ -130,7 +139,7 @@ export class AppComponent {
    console.log(task2);
    */
  }
-
+  /*
   onAddVideo(){
     this.video++;
     this.tictock.next(this.video);
@@ -165,5 +174,17 @@ export class AppComponent {
     this.myDiv2.nativeElement.value = 'alejandra';
 
     this.myDiv3.nativeElement.className = 'classChildView';
+  }
+  */
+ 
+  pure(a:number, b:number){
+    console.log(a + b)
+    return a + b;
+  }
+
+  impure(a:number, b:number){
+    const aux = Math.random();
+    console.log( a + b + aux)
+    return a + b + aux;
   }
 }
