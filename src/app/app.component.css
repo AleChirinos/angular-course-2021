@@ -13,3 +13,8 @@
 .classChildView {
   border: 5px peachpuff solid;
 }
+
+.active-router {
+  background-color: red;
+  color: white;
+}

@@ -15,7 +15,7 @@ export class AppComponent {
 
   sw = true;
 
-  color;string;
+  color:string;
   
   video = 1;
   personASub:Subscription;
