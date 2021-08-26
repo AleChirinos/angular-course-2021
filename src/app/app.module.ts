@@ -17,7 +17,7 @@ import { Test2Component } from './test2/test2.component';
 import { Test3Component } from './test3/test3.component';
 import { View1Component } from './view1/view1.component';
 import { View1sub1Component } from './view1/view1sub1/view1sub1.component';
-import { View1sub2Component } from './view1sub2/view1sub2.component';
+import { View1sub2Component } from './view1/view1sub2/view1sub2.component';
 import { View2Component } from './view2/view2.component';
 
 const routes : Routes= [
