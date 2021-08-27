@@ -39,6 +39,11 @@
 <p>--------- NAVEGATION WITH TS ---------- </p>
 <button (click)="onGoView2FromTS()">GO VIEW 2 FROM TS</button>
 
+<p>--------- QUERY PARAMS ---------- </p>
+<button routerLink="view2/5/sub/34"
+        [queryParams]="{name: 'alejandra', lastName: 'chirinos'}"
+        routerLinkActive="active-router">view2</button>
+
 <!--<p> MODULOS </p>
 <app-admin1> </app-admin1>
 
