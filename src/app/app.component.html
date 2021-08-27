@@ -10,7 +10,7 @@
 
 <button routerLink="view1"
         routerLinkActive="active-router">view1</button>
-<button routerLink="view2"
+<button routerLink="view2/5/sub/34"
         routerLinkActive="active-router">view2</button>
 <button routerLink="view1/view1sub1"
         routerLinkActive="active-router">view1/view1sub1</button>
@@ -36,6 +36,8 @@
 <button routerLink="admin/admin2"
         routerLinkActive="active-router2">admin/admin2</button>
 
+<p>--------- NAVEGATION WITH TS ---------- </p>
+<button (click)="onGoView2FromTS()">GO VIEW 2 FROM TS</button>
 
 <!--<p> MODULOS </p>
 <app-admin1> </app-admin1>
