@@ -8,6 +8,12 @@ import { AppComponent } from './app.component';
 import { Directive1Directive } from './directive1.directive';
 import { Directive2Directive } from './directive2.directive';
 import { CoreModule } from './homeworkModules/core/core.module';
+import { AdminRouteComponent } from './homeworkModulesNavegation/admin-route/admin-route.component';
+import { AdminRoute1Component } from './homeworkModulesNavegation/admin-route/admin-route1/admin-route1.component';
+import { AdminRoute2Component } from './homeworkModulesNavegation/admin-route/admin-route2/admin-route2.component';
+import { HomeRouteComponent } from './homeworkModulesNavegation/home-route/home-route.component';
+import { HomeRoute1Component } from './homeworkModulesNavegation/home-route/home-route1/home-route1.component';
+import { HomeRoute2Component } from './homeworkModulesNavegation/home-route/home-route2/home-route2.component';
 import { AdminModule } from './pages/admin/admin.module';
 import { BuyModule } from './pages/buy/buy.module';
 import { HomeModule } from './pages/home/home.module';
@@ -42,6 +48,32 @@ const routes : Routes= [
   },
   {
     path: 'view3', loadChildren: () => import('./view3/view3.module').then(m => m.View3Module)
+  },
+  {
+    path: 'home', component: HomeRouteComponent, children: [ 
+      {
+        path: '', redirectTo: 'home1', pathMatch: 'full'
+      },
+      {
+        path: 'home1', component: HomeRoute1Component
+      },
+      {
+        path: 'home2', component: HomeRoute2Component
+      }
+    ]
+  },
+  {
+    path: 'admin', component: AdminRouteComponent, children: [ 
+      {
+        path: '', redirectTo: 'admin1', pathMatch: 'full'
+      },
+      {
+        path: 'admin1', component: AdminRoute1Component
+      },
+      {
+        path: 'admin2', component: AdminRoute2Component
+      }
+    ]
   }
 ];
 
@@ -56,7 +88,13 @@ const routes : Routes= [
     View1Component,
     View2Component,
     View1sub1Component,
-    View1sub2Component
+    View1sub2Component,
+    HomeRouteComponent,
+    HomeRoute1Component,
+    HomeRoute2Component,
+    AdminRouteComponent,
+    AdminRoute1Component,
+    AdminRoute2Component
   ],
   imports: [
     BrowserModule,
