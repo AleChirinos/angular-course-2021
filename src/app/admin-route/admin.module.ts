@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminRoute1Component } from 'src/app/homeworkModulesNavegation/admin-route/admin-route1/admin-route1.component';
-import { AdminRoute2Component } from 'src/app/homeworkModulesNavegation/admin-route/admin-route2/admin-route2.component';
-import { AdminRouteComponent } from 'src/app/homeworkModulesNavegation/admin-route/admin-route.component';
+import { AdminRoute1Component } from './admin-route1/admin-route1.component';
+import { AdminRoute2Component } from './admin-route2/admin-route2.component';
+import { AdminRouteComponent } from './admin-route.component';
 
 const routes : Routes = [
   {

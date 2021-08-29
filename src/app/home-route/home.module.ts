@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeRouteComponent } from 'src/app/homeworkModulesNavegation/home-route/home-route.component';
-import { HomeRoute1Component } from 'src/app/homeworkModulesNavegation/home-route/home-route1/home-route1.component';
-import { HomeRoute2Component } from 'src/app/homeworkModulesNavegation/home-route/home-route2/home-route2.component';
+import { HomeRouteComponent } from './home-route.component';
+import { HomeRoute1Component } from './home-route1/home-route1.component';
+import { HomeRoute2Component } from './home-route2/home-route2.component';
 
 const routes : Routes = [
   {
