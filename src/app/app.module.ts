@@ -3,12 +3,17 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
-import { AdminModule } from './pages/admin/admin.module';
-import { BuyModule } from './pages/buy/buy.module';
-import { HomeModule } from './pages/home/home.module';
-import { SharedModule } from './shared/shared.module';
+
 const routes : Routes= [
- 
+  {
+    path : '', redirectTo : 'login', pathMatch: 'full'
+  },
+  {
+    path : 'login', loadChildren : () => import('./login/login.module').then(m => m.LoginModule)
+  },
+  {
+    path : 'pages', loadChildren : () => import('./pages/pages.module').then(m => m.PagesModule)
+  }
 ];
 
 @NgModule({
@@ -18,10 +23,6 @@ const routes : Routes= [
   imports: [
     BrowserModule,
     FormsModule,
-    HomeModule,
-    AdminModule,
-    BuyModule,
-    SharedModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],
