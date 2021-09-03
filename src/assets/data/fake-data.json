@@ -1,0 +1,25 @@
+{
+  "publications" : {
+    "p001" : {
+      "idUser" : 2,
+      "description" : "asdffghj",
+      "date" : "17/08/2021",
+      "image" : "http://firebase/imge.jpg",
+      "userPhotoUrl" : "http://firebase/user1.jpg"
+    },
+    "p002" : {
+      "idUser" : 3,
+      "description" : "asdffghj",
+      "date" : "17/08/2021",
+      "image" : "http://firebase/imge.jpg",
+      "userPhotoUrl" : "http://firebase/user1.jpg"
+    },
+    "p003" : {
+      "idUser" : 4,
+      "description" : "asdffghj",
+      "date" : "17/08/2021",
+      "image" : "http://firebase/imge.jpg",
+      "userPhotoUrl" : "http://firebase/user1.jpg"
+    }
+  }
+}
