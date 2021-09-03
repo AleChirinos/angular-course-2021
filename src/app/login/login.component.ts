@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Test1Service} from "./services/test1.service";
 import {SingletonService} from "./services/singleton.service";
 import {PublicationService} from "./services/publication.service";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-login',
@@ -10,15 +11,34 @@ import {PublicationService} from "./services/publication.service";
 })
 export class LoginComponent implements OnInit {
 
+  name = new FormControl('');
+
+
+  formReactive: FormGroup;
+
   constructor(private testService: Test1Service,
+              private formBuilder: FormBuilder,
               private singletonService : SingletonService,
               private publicationService : PublicationService) {
     console.log(this.testService.getItem())
 
     this.singletonService.setMessage('HI FROM LOGIN');
+    this.formReactive = this.formBuilder.group({
+      name: '',
+      lastName: ['', [Validators.required]],
+      date: ''
+    });
   }
 
   ngOnInit() {
+    this.formReactive.valueChanges.subscribe(res => {
+      console.log('FORM REACTOVE', res);
+    })
+
+    this.name.valueChanges.subscribe(res => {
+      console.log('CHANGES', res)
+    });
+
     this.publicationService.getAll()
       .subscribe(res => {
         console.log('RESPONSE: ', res);
@@ -69,6 +89,14 @@ export class LoginComponent implements OnInit {
 
   onSubmitTemplate(values:any){
     console.log('VALUES: ', values)
+  }
+
+  onShow(){
+    console.log(this.name.value)
+  }
+
+  onShowAll(){
+    console.log('DDDDD', this.formReactive.value)
   }
 
 }
