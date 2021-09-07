@@ -11,8 +11,8 @@ export class AppComponent {
   vaccinated = [];
   unvaccinated=[];
 
-  numVac = 0;
-  numUnvac = 0;
+  totalVaccinated = 0;
+  totalUnvaccinated = 0;
 
   constructor(private vaccinedService : VaccinedService){
     this.vaccinedService.getAllVacc().subscribe(data => this.getDataVaccinatedPeople(data))
@@ -21,13 +21,23 @@ export class AppComponent {
 
  getDataVaccinatedPeople(data){
   this.vaccinated=Object.entries(data);
-  console.log(this.vaccinated)
+  console.log(this.vaccinated);
+  this.checkTotalVaccinated()
  }
 
  getDataUnvaccinatedPeople(data){
   this.unvaccinated=Object.entries(data);
-  console.log(this.unvaccinated)
+  console.log(this.unvaccinated);
+  this.checkTotalUnvaccinated()
  }
+
+ checkTotalVaccinated(){
+   this.totalVaccinated=this.vaccinated.length
+ }
+ 
+ checkTotalUnvaccinated(){
+  this.totalUnvaccinated=this.unvaccinated.length
+}
 
  Vaccinate(id,name,age,date,disease,vaccined,doses, vaccineType){
 
