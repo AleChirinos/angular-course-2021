@@ -14,9 +14,9 @@ export class AppComponent {
   numVac = 0;
   numUnvac = 0;
 
-  constructor(private fetcher : VaccinedService){
-    this.fetcher.getAllVacc().subscribe(data => this.getDataVaccinatedPeople(data))
-    this.fetcher.getAllUnvacc().subscribe(data => this.getDataUnvaccinatedPeople(data))
+  constructor(private vaccinedService : VaccinedService){
+    this.vaccinedService.getAllVacc().subscribe(data => this.getDataVaccinatedPeople(data))
+    this.vaccinedService.getAllUnvacc().subscribe(data => this.getDataUnvaccinatedPeople(data))
  }
 
  getDataVaccinatedPeople(data){
@@ -32,11 +32,11 @@ export class AppComponent {
  Vaccinate(id,name,age,date,disease,vaccined,doses, vaccineType){
 
   var actualDoses = doses+1
-  this.fetcher.updateVac(id,actualDoses).subscribe(res => console.log(res))
+  this.vaccinedService.updateVac(id,actualDoses).subscribe(res => console.log(res))
 
   if(vaccineType === "A" && actualDoses ===1){
-    this.fetcher.delete(id).subscribe(res => console.log(res))
-    this.fetcher.create({
+    this.vaccinedService.delete(id).subscribe(res => console.log(res))
+    this.vaccinedService.create({
       "name": name, 
       "age": age, 
       "date": date, 
@@ -46,8 +46,8 @@ export class AppComponent {
       "doses": doses
     }).subscribe(res => console.log(res))
   }else if(vaccineType === "B"&& actualDoses ===2){
-    this.fetcher.delete(id).subscribe(res => console.log(res))
-    this.fetcher.create({
+    this.vaccinedService.delete(id).subscribe(res => console.log(res))
+    this.vaccinedService.create({
       "name": name, 
       "age": age, 
       "date": date, 
@@ -57,8 +57,8 @@ export class AppComponent {
       "doses": doses
     }).subscribe(res => console.log(res))
   }else if(vaccineType === "C"&& actualDoses ===3){
-    this.fetcher.delete(id).subscribe(res => console.log(res))
-    this.fetcher.create({
+    this.vaccinedService.delete(id).subscribe(res => console.log(res))
+    this.vaccinedService.create({
       "name": name, 
       "age": age, 
       "date": date, 
@@ -69,8 +69,8 @@ export class AppComponent {
     }).subscribe(res => console.log(res))
   }
 
-  this.fetcher.getAllVacc().subscribe(data => this.getDataVaccinatedPeople(data))
-  this.fetcher.getAllUnvacc().subscribe(data => this.getDataUnvaccinatedPeople(data))
+  this.vaccinedService.getAllVacc().subscribe(data => this.getDataVaccinatedPeople(data))
+  this.vaccinedService.getAllUnvacc().subscribe(data => this.getDataUnvaccinatedPeople(data))
 
   window.location.reload();
  }
