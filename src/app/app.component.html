@@ -1,2 +1,48 @@
 <h3> SECOND TEST</h3>
 <p>Name: Alejandra Gabriela Chirinos Valle</p>
+
+<div style="border: 5px aqua solid; background-color: rgb(170, 235, 235);">
+  <h2> 2. VACUNAS</h2>
+
+  <div style="border: 5px blue solid; background-color: rgb(98, 137, 223);">
+    Vaccinated = {{numVac}}
+  </div>
+
+  <div style="display: flex; flex-direction: row">
+    <div *ngFor="let person of vaccinated">
+      <app-vaccinated-people 
+        [id]="person[0]" 
+        [name] = "person[1]['name']" 
+        [age]="person[1]['name']"  
+        [date]= "person[1]['date']"
+        [disease]= "person[1]['disease']"
+        [vaccineType]= "person[1]['vaccineType']"
+        [vaccined]= "person[1]['vaccined']"
+        [doses]= "person[1]['doses']">
+      </app-vaccinated-people>
+    </div>
+  </div>
+
+  <div style="border: 5px blue solid; background-color: rgb(98, 137, 223);">
+    Unvaccineated = {{numUnvac}}
+  </div>
+
+  <div style="display: flex; flex-direction: row">
+    <div *ngFor="let person of unvaccinated">
+      <app-vaccinated-people  
+      [id]="person[0]" 
+      [name] = "person[1]['name']" 
+      [age]="person[1]['age']"  
+      [date]= "person[1]['date']"
+      [disease]= "person[1]['disease']" 
+      [vaccineType]= "person[1]['vaccineType']" 
+      [vaccined]= "person[1]['vaccined']" 
+      [doses]= "person[1]['doses']">
+        <button [disabled]="person[1]['disease'] === true || person[1]['age'] < 18" 
+                (click)="Vaccinate(person[0],person[1]['name'],person[1]['age'],person[1]['date'],person[1]['disease'],person[1]['vaccined'],person[1]['doses'], person[1]['vaccineType'])">
+                Vaccinate
+        </button>
+      </app-vaccinated-people >
+    </div>
+  </div>
+</div>
