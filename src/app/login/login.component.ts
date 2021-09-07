@@ -12,6 +12,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 export class LoginComponent implements OnInit {
 
   name = new FormControl('');
+  name2:string = '';
 
 
   formReactive: FormGroup;
@@ -98,5 +99,4 @@ export class LoginComponent implements OnInit {
   onShowAll(){
     console.log('DDDDD', this.formReactive.value)
   }
-
 }
