@@ -4,6 +4,10 @@
 <div style="border: 5px aqua solid; background-color: rgb(170, 235, 235);">
   <h2> 2. VACUNAS</h2>
 
+  <div style="background-color: rgb(110, 224, 16);">
+    <div *ngIf="checkEverybodyVaccinated">EVERYBODY VACCINATED</div>
+  </div>
+
   <div style="border: 5px blue solid; background-color: rgb(98, 137, 223);">
     Vaccinated = {{totalVaccinated}}
   </div>

@@ -14,6 +14,9 @@ export class AppComponent {
   totalVaccinated = 0;
   totalUnvaccinated = 0;
 
+  vac = this.unvaccinated.find(per => per[1]['disease'] === false);
+  allPosVac = this.unvaccinated.find(per => per[1]['age'] >=18 );
+
   constructor(private vaccinedService : VaccinedService){
     this.vaccinedService.getAllVacc().subscribe(data => this.getDataVaccinatedPeople(data))
     this.vaccinedService.getAllUnvacc().subscribe(data => this.getDataUnvaccinatedPeople(data))
@@ -34,9 +37,12 @@ export class AppComponent {
  checkTotalVaccinated(){
    this.totalVaccinated=this.vaccinated.length
  }
- 
+
  checkTotalUnvaccinated(){
   this.totalUnvaccinated=this.unvaccinated.length
+}
+ checkEverybodyVaccinated(){
+   if(vac && allPosVac ==! undefined)true;  else false
 }
 
  Vaccinate(id,name,age,date,disease,vaccined,doses, vaccineType){
