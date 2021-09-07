@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class VaccinedService {
 
-  url="https://data-test2-b1af6-default-rtdb.firebaseio.com/"
+  url="https://vaccines-test-default-rtdb.firebaseio.com/"
 
   constructor(private http: HttpClient) { }
 
