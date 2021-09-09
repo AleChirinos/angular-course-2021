@@ -1,4 +1,4 @@
-<button (click)="setMessage()">set message</button>
+<!-- <button (click)="setMessage()">set message</button>
 <button routerLink="../pages">pages</button>
 
 <button (click)="create()">crear</button>
@@ -33,14 +33,14 @@
   <input type="text" formControlName="date">
 </div>
 <button (click)="onShowAll()">SHOW ALL</button>
-
+-->
 <h2> Validations </h2>
 <p> --------- VALIDATIONS ---------- </p>
 <input type="text"
        required
        minlength="5"
        maxlength="10"
-       [(ngModel)]="name2"
+       [(ngModel)]="name"
        #nameLocal="ngModel">
 
 <div>
@@ -61,4 +61,28 @@
     minLength is required
   </div>
 
+</div>
+
+
+<h2> Reactive form validation</h2>
+<p>---------REACTIVE FORM VALIDATION -------------</p>
+
+<div [formGroup]="formReactive">
+  <label>name</label>
+  <input type = 'text' formControlName="name">
+  <div *ngIf="getValue('name').invalid && (getValue('name')?.touched || getValue('name')?.dirty)">
+    <div *ngIf="getValue('name').errors.required">
+      NAME IS REQUIRED
+    </div>
+    <div *ngIf="getValue('name').errors.minlength">
+      MINLENGTH IS 3
+    </div>
+  </div>
+  <label >lastName</label>
+  <input type = 'text' formControlName="lastName">
+  <div *ngIf="getValue('lastName').invalid && (getValue('lastName')?.touched || getValue('lastname')?.dirty)">
+    <div *ngIf="getValue('lastName').errors.required">
+      LASTNAME IS REQUIRED
+    </div>
+  </div>
 </div>

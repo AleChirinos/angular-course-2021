@@ -11,27 +11,32 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class LoginComponent implements OnInit {
 
-  name = new FormControl('');
-  name2:string = '';
-
+  //name = new FormControl('');
+  name:string = '';
 
   formReactive: FormGroup;
 
-  constructor(private testService: Test1Service,
+  constructor(//private testService: Test1Service,
               private formBuilder: FormBuilder,
-              private singletonService : SingletonService,
-              private publicationService : PublicationService) {
-    console.log(this.testService.getItem())
+   //           private singletonService : SingletonService,
+   //           private publicationService : PublicationService
+  ) {
+    /*console.log(this.testService.getItem())
 
     this.singletonService.setMessage('HI FROM LOGIN');
     this.formReactive = this.formBuilder.group({
       name: '',
       lastName: ['', [Validators.required]],
       date: ''
+    });*/
+    this.formReactive = this.formBuilder.group({
+      name: ['', [Validators.required, Validators.minLength(2)]],
+      lastName: ['', Validators.required]
     });
   }
 
   ngOnInit() {
+    /*
     this.formReactive.valueChanges.subscribe(res => {
       console.log('FORM REACTOVE', res);
     })
@@ -44,8 +49,13 @@ export class LoginComponent implements OnInit {
       .subscribe(res => {
         console.log('RESPONSE: ', res);
       });
+      */
+    this.formReactive = this.formBuilder.group({
+      name: '',
+      lastName: ''
+    })
   }
-
+  /*
   setMessage(){
     this.singletonService.setMessage('HI FROM LOGIN');
   }
@@ -98,5 +108,9 @@ export class LoginComponent implements OnInit {
 
   onShowAll(){
     console.log('DDDDD', this.formReactive.value)
+  }*/
+
+  getValue(value: string){
+    return this.formReactive.get(value);
   }
 }
