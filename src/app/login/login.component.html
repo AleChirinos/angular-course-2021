@@ -1,88 +1,27 @@
-<!-- <button (click)="setMessage()">set message</button>
-<button routerLink="../pages">pages</button>
+<div class="container row">
 
-<button (click)="create()">crear</button>
-<button (click)="delete()">eliminar</button>
-<button (click)="update()">actualizar</button>
-<button (click)="patch()">patch</button>
-
-<app-login1></app-login1>
-<app-login2></app-login2>
-
-<h2> Template form</h2>
-
-<p>---------TEMPLATE FORM---------</p>
-<form #formTemplate="ngForm"
-      (ngSubmit)="onSubmitTemplate(formTemplate)">
-  <input type="text" name="aagggg" ngModel>
-  <input type="text" name="bb" ngModel>
-  <input type="text" name="cc" ngModel>
-  <button type="submit">submit</button>
-</form>
-
-<h2> Reactive form</h2>
-<p>---------REACTIVE FORMS-------------</p>
-
-<input type="text" [formControl]="name">
-<button (click)="onShow()">SHOW</button>
-
-
-<div [formGroup]="formReactive">
-  <input type="text" formControlName="name">
-  <input type="text" formControlName="lastName">
-  <input type="text" formControlName="date">
-</div>
-<button (click)="onShowAll()">SHOW ALL</button>
--->
-<h2> Validations </h2>
-<p> --------- VALIDATIONS ---------- </p>
-<input type="text"
-       required
-       minlength="5"
-       maxlength="10"
-       [(ngModel)]="name"
-       #nameLocal="ngModel">
-
-<div>
-  {{nameLocal.errors | json}}
-</div>
-
-<div *ngIf="nameLocal.valid">
-  ES VALIDO
-</div>
-
-<div *ngIf="nameLocal.invalid && (nameLocal.touched || nameLocal.dirty )">
-
-  <div *ngIf="nameLocal.errors?.required">
-    Name is required
+  <div class="left col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+    <img src="assets/img/logo.svg" alt="">
+    <p>
+      Connect with friends and the world around you on Facebook.
+    </p>
   </div>
 
-  <div *ngIf="nameLocal.errors?.minlength">
-    minLength is required
+  <div class="right col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+
+    <mat-card class="form">
+      <mat-card-content style="display: flex; flex-direction: column;">
+        <input type="text" placeholder="Email address or phone number">
+        <input type="password" placeholder="Password">
+        <button class="login-btn">Log In</button>
+        <a href="">Forgot Password?</a>
+        <div class="underline"></div>
+        <button class="create-new-account-btn">Create New Account</button>
+      </mat-card-content>
+    </mat-card>
+
+    <p><a href="">Create a Page</a> for celebrity, band or business.</p>
+
   </div>
 
-</div>
-
-
-<h2> Reactive form validation</h2>
-<p>---------REACTIVE FORM VALIDATION -------------</p>
-
-<div [formGroup]="formReactive">
-  <label>name</label>
-  <input type = 'text' formControlName="name">
-  <div *ngIf="getValue('name').invalid && (getValue('name')?.touched || getValue('name')?.dirty)">
-    <div *ngIf="getValue('name').errors.required">
-      NAME IS REQUIRED
-    </div>
-    <div *ngIf="getValue('name').errors.minlength">
-      MINLENGTH IS 3
-    </div>
-  </div>
-  <label >lastName</label>
-  <input type = 'text' formControlName="lastName">
-  <div *ngIf="getValue('lastName').invalid && (getValue('lastName')?.touched || getValue('lastname')?.dirty)">
-    <div *ngIf="getValue('lastName').errors.required">
-      LASTNAME IS REQUIRED
-    </div>
-  </div>
 </div>
