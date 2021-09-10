@@ -10,6 +10,8 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {MatCardModule} from "@angular/material/card";
 import {AuthService} from "./services/auth.service";
+import { RegisterComponent } from './components/register/register.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 const routes : Routes = [
   {
@@ -29,10 +31,12 @@ const routes : Routes = [
     ReactiveFormsModule,
     MatCardModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule
   ],
   declarations: [
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   providers: [
     AuthService
