@@ -6,14 +6,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgbButtonsModule, NgbModule, NgbToastModule} from "@ng-bootstrap/ng-bootstrap";
 import {MatSliderModule} from "@angular/material/slider";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
-import {Test1Service} from "./services/test1.service";
-import { Login1Component } from './components/login1/login1.component';
-import { Login2Component } from './components/login2/login2.component';
-import {UtilsService} from "./services/utils.service";
-import {PublicationService} from "./services/publication.service";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {MatCardModule} from "@angular/material/card";
+import {AuthService} from "./services/auth.service";
 
 const routes : Routes = [
   {
@@ -36,14 +32,10 @@ const routes : Routes = [
     MatButtonModule
   ],
   declarations: [
-    LoginComponent,
-    Login1Component,
-    Login2Component
+    LoginComponent
   ],
   providers: [
-    Test1Service,
-    UtilsService,
-    PublicationService
+    AuthService
   ]
 })
 export class LoginModule { }
