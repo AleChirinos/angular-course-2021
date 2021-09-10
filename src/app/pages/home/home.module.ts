@@ -11,6 +11,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { PostComponent } from './components/post/post.component';
 import { MessageSenderComponent } from './components/message-sender/message-sender.component';
 import { HeaderComponent } from './components/header/header.component';
+import {PublicationService} from "../shared/services/publication.service";
 
 const routes : Routes = [
   {
@@ -34,6 +35,9 @@ const routes : Routes = [
     PostComponent,
     MessageSenderComponent,
     HeaderComponent
-  ]
+  ],
+  providers: [
+  PublicationService
+]
 })
 export class HomeModule { }
