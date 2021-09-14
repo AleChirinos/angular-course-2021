@@ -5,8 +5,8 @@ import {
   HttpEvent,
   HttpInterceptor, HttpParams
 } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import {AuthService} from "../../login/services/auth.service";
+import {Observable, throwError} from 'rxjs';
+import {AuthService} from "../services/auth.service";
 import {catchError} from "rxjs/operators";
 
 @Injectable()
@@ -20,13 +20,14 @@ export class AuthInterceptor implements HttpInterceptor {
 
     if(token){
       let params = new HttpParams();
-      params.append('auth', token);
+      params = params.append('auth', token);
 
       request = request.clone({
         url: `${request.url}`,
         params
       });
     }
+
     return next.handle(request).pipe(
       catchError( (err:any) => {
         console.log('ERROR', err)
@@ -34,4 +35,5 @@ export class AuthInterceptor implements HttpInterceptor {
       })
     );
   }
+
 }

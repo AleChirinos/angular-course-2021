@@ -1,18 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {AuthService} from "./services/auth.service";
+import {AuthService} from "../core/services/auth.service";
 import {MatDialog} from "@angular/material/dialog";
 import {RegisterComponent} from "./components/register/register.component";
 import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  templateUrl: './login.component.html'
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService : AuthService,
+  constructor(private authService: AuthService,
               private matDialog: MatDialog,
               private router: Router) {
   }

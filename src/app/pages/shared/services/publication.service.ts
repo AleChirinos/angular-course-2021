@@ -6,11 +6,12 @@ import {Observable} from "rxjs";
 @Injectable()
 export class PublicationService {
 
-  private url = environment.app.apiBaseUrl
+  private url = environment.app.apiBaseUrl;
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  getAll() : Observable<any>{
+  getAll(): Observable<any>{
     return this.http.get(`${this.url}/publications.json`)
   }
+
 }
