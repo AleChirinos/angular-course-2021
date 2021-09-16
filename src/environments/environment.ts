@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  app: {
+    apiBaseUrl: "https://data-test2-b1af6-default-rtdb.firebaseio.com/"
+  }
 };
 
 /*

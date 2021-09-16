@@ -1,0 +1,10 @@
+<div style="border: 1px solid green;"
+     [ngClass]="{
+      'brown' : (data.eth + data.btc) > 7,
+      'gray' : (data.eth + data.btc) < 1
+     }">
+  <p>wallet{{data.wallet}}</p>
+  <p>name{{data.name}}</p>
+  <p>eth{{data.eth}}</p>
+  <p>btc{{data.btc}}</p>
+</div>

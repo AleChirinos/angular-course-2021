@@ -1,81 +1,56 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+import {WalletService} from "./services/wallet.service";
+import {TransactionService} from "./services/transaction.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'angular2021';
+export class AppComponent implements OnInit {
+  wallets: any[] = [];
+  transactions: any[] = []
 
-  constructor(){
+  constructor(private walletService: WalletService,
+              private transactionService: TransactionService) {
+  }
 
-    const testMap = [1,2,3,4,5,6].map(item => item * 2);
-    console.log(testMap);
+  ngOnInit(): void {
+    this.loadWallets();
+    this.loadTransactions();
+  }
 
-    const testForeach = [1,2,3,4,5,6].forEach(item => item);
-    console.log(testForeach);
+  onMine(transaction: any): void {
+    const walletFROM = this.wallets.find(w => w.wallet === transaction.from);
+    const walletTO = this.wallets.find(w => w.wallet === transaction.to);
 
-    const testFind = [1,2,3,4,5,6].find(item => item === 4);
-    console.log(testFind);
+    walletFROM[transaction.moneyType] = walletFROM[transaction.moneyType] - transaction.quantity;
+    walletTO[transaction.moneyType] = walletTO[transaction.moneyType] + transaction.quantity;
 
-    const testFilter = [1,2,3,4,5,6].filter(item => item%2 === 0);
-    console.log(testFilter);
+    this.transactionService.delete(transaction.id).subscribe(() => this.loadTransactions());
+    this.walletService.update(walletFROM.id, walletFROM).subscribe(res => this.loadWallets());
+    this.walletService.update(walletTO.id, walletTO).subscribe(res => this.loadWallets());
+  }
 
-    const testFindIndex = [90,2,300,4,5,6].findIndex(item => item === 300);
-    console.log(testFindIndex);
+  getTransactionsStatus(): boolean {
+    const aux = this.transactions.filter(t => t.mineType === 'PoS' && t.miner < 5);
+    return this.transactions.length === aux.length;
+  }
 
-    const testIndexOf = 'ricardo'.indexOf('o')
-    console.log(testIndexOf);
+  getTotalCoin(type: string): number {
+    return this.wallets.reduce((acc, value) => acc + (value[type] > 0 ? value[type] : 0), 0);
+  }
 
-    const testJoin = [1,2,3,4,5,6].join(',');
-    console.log(testJoin);
+  loadTransactions(): void {
+    this.transactionService.getAll().subscribe(res =>
+      this.transactions = Object.entries(res).map((s: any) => ({id: s[0], ...s[1]}))
+    );
+  }
 
-    const testSplit = '1,2,3,4,5,6'.split(',');
-    console.log(testSplit);
-
-    const testSpliceA = [10,20,30,40,50,60];
-    const testSpliceB = [1,2,3,4,5,6].splice(1,2);
-    testSpliceA.splice(0,1)
-
-    console.log(testSpliceB,  testSpliceA);
-
-    const testReduce = [1,2,3,4,5,6].reduce((acc, value) => acc + value, 100);
-    
-    const asadasd = {1:'d',2:'d',3:'d',4:'d',5:'d'};
-
-    const testEntries = {value: 'ricardo', key:'RPC'};
-    console.log('aaaa', Object.entries(testEntries));
-    console.log('bbbbb', Object.keys(testEntries));
-    console.log('ccccc', Object.values(testEntries));
-
-
-     const array1 = [1,2,3,4,5];
-     const array2 = [9,10,11, ...array1]
-
-     const per1 = {name: 'a', age: 12};
-     const per2 = {data: 'R', ...per1};
-
-     console.log('Spread', array2, per2)
-
-
-     const per3 = {
-      name: 'a', 
-      age: 12, 
-      phone: 12323234234, 
-      extra: 123, 
-      response:200,
-      response2:200,
-      response4:200
-      };
-
-   const {phone:ci} = per3;
-   console.log('name=', ci); 
-
-   const tarea1= {1:'a',2:'a',3:'a',4:'a',5:'a',6:'a'};
-   console.log('Result', Object.keys(tarea1));
-
-   const tarea2= [1,2,3,4,5,6].filter(item => item%2 === 0).join(',');
-   console.log(tarea2);
- }
+  loadWallets(): void {
+    this.walletService.getAll().subscribe(res =>
+      this.wallets = Object.entries(res).map((s: any) => ({id: s[0], ...s[1]}))
+    );
+  }
 }
