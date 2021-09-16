@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import {WalletService} from "./services/wallet.service";
 import {TransactionService} from "./services/transaction.service";
 
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Subscription } from 'rxjs';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,15 +13,37 @@ import {TransactionService} from "./services/transaction.service";
 })
 export class AppComponent implements OnInit {
   wallets: any[] = [];
-  transactions: any[] = []
+  transactions: any[] = [];
+
+  mSubGet: Subscription;
+  mSubPost: Subscription;
+  mSubDelete: Subscription;
+  mSubPut: Subscription;
+
+  masForm: FormGroup;
+
+  myDate = new Date();
+
+  editId: any;
+  edit: boolean;
 
   constructor(private walletService: WalletService,
-              private transactionService: TransactionService) {
+              private transactionService: TransactionService,
+              private formBuilder: FormBuilder) {
   }
 
   ngOnInit(): void {
+    this.edit = false;
     this.loadWallets();
     this.loadTransactions();
+    this.masForm = this.formBuilder.group({
+      from: '',
+      to: '',
+      quantity: '',
+      moneyType: '',
+      typeMiner: '',
+      miner: ''
+    });
   }
 
   onMine(transaction: any): void {
@@ -52,5 +77,50 @@ export class AppComponent implements OnInit {
     this.walletService.getAll().subscribe(res =>
       this.wallets = Object.entries(res).map((s: any) => ({id: s[0], ...s[1]}))
     );
+  }
+
+  onCreate(): void{
+    console.log(this.masForm.value);
+    this.mSubPost = this.transactionService.create(this.masForm.value).subscribe(
+      res => {
+        console.log('ADD RES', res);
+        this.loadTransactions();
+      },
+      error => {
+        console.log('ADD ERROR', error);
+      }
+    );
+  }
+
+  onUpdate(): void{
+    this.mSubPut = this.transactionService.update(this.editId, this.masForm.value).subscribe(
+      res => {
+        console.log('UPDATE RES', res);
+        this.loadTransactions();
+      },
+      error => {
+        console.log('UPDATE ERROR', error);
+      }
+    );
+  }
+
+  onEdit(transaction: any): void{
+    this.editId = transaction.id;
+    this.masForm.patchValue(transaction);
+    this.edit = true;
+  }
+
+  notEdit(): void{
+    this.edit = false;
+    this.editId = '';
+
+    this.masForm.patchValue({
+      from: '',
+      to: '',
+      quantity: '',
+      moneyType: '',
+      typeMiner: '',
+      miner: ''
+    });
   }
 }

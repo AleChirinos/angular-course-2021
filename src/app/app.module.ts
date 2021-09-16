@@ -8,6 +8,14 @@ import { WalletService } from './services/wallet.service';
 import { TransactionComponent } from './transaction/transaction.component';
 import { WalletComponent } from './wallet/wallet.component';
 
+//import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +24,14 @@ import { WalletComponent } from './wallet/wallet.component';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [
     TransactionService,

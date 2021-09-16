@@ -1,6 +1,66 @@
 <h3> FINAL TEST</h3>
 <p>Name: Alejandra Gabriela Chirinos Valle</p>
 
+<form [formGroup]="masForm" style="display: flex; flex-direction: column; max-width: 300px; margin: 20px">
+
+  <mat-form-field appearance="fill">
+    <input matInput formControlName="from" type="text" placeholder="From">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <input matInput formControlName="to" type="text" placeholder="To">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <input matInput formControlName="quantity" type="text" placeholder="Quantity">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <input matInput formControlName="moneyType" type="text" placeholder="Money type:">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <input matInput formControlName="typeMiner" type="text" placeholder="Miner type:">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <input matInput formControlName="miner" type="text" placeholder="Miner">
+  </mat-form-field>
+
+  <button mat-stroked-button color="primary" (click)="onCreate()" style="margin: 20%">CREATE</button>
+
+</form>
+
+<form [formGroup]="masForm" style="display: flex; flex-direction: column; max-width: 300px; margin: 20px">
+
+  <mat-form-field appearance="fill">
+    <input matInput formControlName="from" type="text" placeholder="From">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <input matInput formControlName="to" type="text" placeholder="To">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <input matInput formControlName="quantity" type="text" placeholder="Quantity">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <input matInput formControlName="moneyType" type="text" placeholder="Money type:">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <input matInput formControlName="typeMiner" type="text" placeholder="Miner type:">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <input matInput formControlName="miner" type="text" placeholder="Miner">
+  </mat-form-field>
+
+  <button mat-stroked-button color="primary" (click)="onUpdate()" style="margin: 20%">EDIT</button>
+
+</form>
+
 <h4>WALLETS</h4>
 
 <div>
@@ -30,9 +90,12 @@
       <button
         [disabled]="transaction.mineType === 'PoS' &&
        transaction.miner < 20"
-      (click)="onMine(transaction)">
+        (click)="onMine(transaction)">
         mine
       </button>
+      <mat-card-actions>
+        <button  (click)="onEdit(transaction)">Edit</button>
+      </mat-card-actions>
     </app-transaction>
   </div>
 </div>
