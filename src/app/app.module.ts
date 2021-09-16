@@ -8,7 +8,7 @@ import { WalletService } from './services/wallet.service';
 import { TransactionComponent } from './transaction/transaction.component';
 import { WalletComponent } from './wallet/wallet.component';
 
-//import {MatCardModule} from '@angular/material/card';
+import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -25,6 +25,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     HttpClientModule,
+    MatCardModule,
     MatButtonModule,
     MatSidenavModule,
     MatFormFieldModule,
