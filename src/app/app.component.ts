@@ -41,7 +41,7 @@ export class AppComponent implements OnInit {
       to: '',
       quantity: '',
       moneyType: '',
-      typeMiner: '',
+      mineType: '',
       miner: ''
     });
   }
@@ -119,7 +119,7 @@ export class AppComponent implements OnInit {
       to: '',
       quantity: '',
       moneyType: '',
-      typeMiner: '',
+      mineType: '',
       miner: ''
     });
   }
