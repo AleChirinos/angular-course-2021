@@ -4,7 +4,12 @@
 
 <p>This form is for create and edit</p>
 
-<form [formGroup]="masForm" style="display: flex; flex-direction: column; max-width: 300px; margin: 20px">
+<form [formGroup]="masForm" style="display: flex; flex-direction: column; max-width: 400px; margin: 20px">
+
+  <mat-form-field appearance="fill">
+    <input matInput formControlName="date" type="text" placeholder="From">
+    {{currentDate | date:'yyyy-MM-dd'}}
+  </mat-form-field>
 
   <mat-form-field appearance="fill">
     <input matInput formControlName="from" type="text" placeholder="From">
@@ -34,8 +39,6 @@
   <button mat-stroked-button color="primary" (click)="onUpdate()" style="margin: 20%">EDIT</button>
 
 </form>
-
-
 
 <h4>WALLETS</h4>
 

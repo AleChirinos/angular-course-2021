@@ -22,7 +22,8 @@ export class AppComponent implements OnInit {
 
   masForm: FormGroup;
 
-  myDate = new Date();
+  currentDate = new Date();
+  
 
   editId: any;
   edit: boolean;
@@ -37,6 +38,7 @@ export class AppComponent implements OnInit {
     this.loadWallets();
     this.loadTransactions();
     this.masForm = this.formBuilder.group({
+      date: '',
       from: '',
       to: '',
       quantity: '',
