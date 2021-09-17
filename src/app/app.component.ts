@@ -38,7 +38,7 @@ export class AppComponent implements OnInit {
     this.loadWallets();
     this.loadTransactions();
     this.masForm = this.formBuilder.group({
-      date: '',
+      date: this.currentDate.toLocaleDateString(),
       from: '',
       to: '',
       quantity: '',
