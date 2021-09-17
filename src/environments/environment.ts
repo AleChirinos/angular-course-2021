@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   app: {
-    apiBaseUrl: "https://data-test2-b1af6-default-rtdb.firebaseio.com/"
+    apiBaseUrl: "https://bitcoin-test-a0874-default-rtdb.firebaseio.com/"
   }
 };
 
